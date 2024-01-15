@@ -1,4 +1,6 @@
 ### Introducing Your Ultimate Random Number Selector Website!
+![image](https://github.com/DiBandara/Random_Number-_Selector/assets/126832444/713f26dc-b91c-4003-bc6b-281f25f76b62)
+
 
 Hello,
 
