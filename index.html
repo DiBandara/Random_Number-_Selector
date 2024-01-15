@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="styles.css">
+    <title>Random Number Selector</title>
+</head>
+<style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #ff7043, #f06292);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #2196f3;
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #ff4081;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button:hover {
+    background-color: #e91e63;
+}
+
+.spinner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0 10px 10px 0;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 4px solid #2196f3;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 24px;
+    color: #4caf50;
+}
+
+/* Styling for a responsive layout */
+
+/* Existing styles... */
+
+/* Styling for a responsive layout */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+    button {
+        width: 100%;
+        font-size: 16px;
+    }
+    .input-group {
+        width: 80%; /* Adjust as needed */
+    }
+}
+
+/* Additional styles for smaller screens can be added here */
+
+/* Existing styles... */
+
+/* ... (existing styles) */
+
+.loading-dots {
+    display: none;
+    margin-left: 10px;
+}
+
+.loading-dots span {
+    display: inline-block;
+    margin-right: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: #2196f3;
+    border-radius: 50%;
+    animation: bounce 0.5s infinite alternate;
+}
+
+@keyframes bounce {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+/* ... (existing styles) */
+/* ... (existing styles) */
+
+.loading-dots {
+    display: none;
+    margin-left: 10px;
+}
+
+.loading-dots span {
+    display: inline-block;
+    margin-right: 4px;
+    width: 10px;
+    height: 10px;
+    background-color: #2196f3;
+    border-radius: 50%;
+    animation: loading 1.5s infinite;
+ 
+}
+
+@keyframes loading {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* ... (existing styles) */
+/* ... (existing styles) */
+
+.dot-spin {
+   margin-left: 28px;
+  position: relative;
+  width: 9px;
+  height: 9px;
+  border-radius: 10px;
+  background-color: transparent;
+  color: transparent;
+  box-shadow: 0 -18px 0 0 #9880ff, 12.727926px -12.727926px 0 0 #9880ff, 18px 0 0 0 #9880ff, 12.727926px 12.727926px 0 0 rgba(152, 128, 255, 0), 0 18px 0 0 rgba(152, 128, 255, 0), -12.727926px 12.727926px 0 0 rgba(152, 128, 255, 0), -18px 0 0 0 rgba(152, 128, 255, 0), -12.727926px -12.727926px 0 0 rgba(152, 128, 255, 0);
+  animation: dot-spin 1.5s infinite linear, loading 1.5s infinite linear;
+}
+
+@keyframes dot-spin {
+  0%, 100% {
+    box-shadow: 0 -18px 0 0 #9880ff, 12.727926px -12.727926px 0 0 #9880ff, 18px 0 0 0 #9880ff, 12.727926px 12.727926px 0 -5px rgba(152, 128, 255, 0), 0 18px 0 -5px rgba(152, 128, 255, 0), -12.727926px 12.727926px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.727926px -12.727926px 0 -5px rgba(152, 128, 255, 0);
+  }
+  12.5% {
+    box-shadow: 0 -18px 0 -5px rgba(152, 128, 255, 0), 12.727926px -12.727926px 0 0 #9880ff, 18px 0 0 0 #9880ff, 12.727926px 12.727926px 0 0 #9880ff, 0 18px 0 -5px rgba(152, 128, 255, 0), -12.727926px 12.727926px 0 -5px rgba(152, 128, 255, 0), -18px 0 0 -5px rgba(152, 128, 255, 0), -12.727926px -12.727926px 0 -5px rgba(152, 128, 255, 0);
+  }
+  /* ... (existing dot-spin keyframes) */
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+.text1 {
+  
+  font-family: 'Indie Flower', cursive;
+  font-color: blue;
+  font-size: 70px;
+  
+}
+
+.simple-tb {
+  color: white;
+	width:200px;
+	height:35px;
+	border-radius:5px;
+  transition-property:background-color,border-radius,width,height,color;
+  transition-duration:0.215s;
+  transition-delay: 0.215s;
+  text-align:center;
+  border: none;
+  float: none;
+  border-bottom: 1px solid blue;
+  font-family: 'Raleway', sans-serif;
+  background-color:transparent;
+	}
+
+.simple-tb:hover {
+		background-color:white;
+		border-radius:15px;
+		color:black;
+		width:250px;
+		height:35px;
+	}
+</style>
+<body>
+    <form> 
+        <h1>Random Number Selector</h1>
+        <div class="input-group">
+            <label for="start">Start Range:</label>
+            <input type="number" id="start" min="0" step="1" value="0">
+        </div>
+        <div class="input-group">
+            <label for="end">End Range:</label>
+            <input type="number" id="end" min="0" step="1" value="10">
+        </div>
+        <div class="input-group">
+          
+            <label for="count">Select Count:</label>
+          
+            <input type="number" id="count" min="1" step="1" value="1">
+        </div>
+        <!-- ... (existing HTML) -->
+<button id="selectBtn" onclick="selectNumbers()">
+    Select Numbers
+    
+    <div class="col-3">
+        <div class="snippet" data-title="dot-spin">
+          <div class="stage">
+            <div class="dot-spin"></div>
+          </div>
+        </div>
+      </div>
+  
+</button>
+<!-- ... (existing HTML) -->
+
+        <p id="result"></p>
+    </form>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    const dotSpin = document.querySelector('.dot-spin');
+
+    // Hide the dot-spin initially
+    dotSpin.style.display = "none";
+});
+
+function selectNumbers() {
+    const dotSpin = document.querySelector('.dot-spin');
+    const selectBtn = document.getElementById("selectBtn");
+
+    // Show the dot-spin when the button is clicked
+    dotSpin.style.display = "inline-block";
+
+    const start = parseInt(document.getElementById("start").value);
+    const end = parseInt(document.getElementById("end").value);
+    const count = parseInt(document.getElementById("count").value);
+
+    if (isNaN(start) || isNaN(end) || isNaN(count) || start > end || count < 1) {
+        alert("Please enter valid input.");
+        // Hide the dot-spin if the input is not valid
+        dotSpin.style.display = "none";
+        return;
+    }
+
+    const selectingTime = 2000; // Time in milliseconds for fake selecting
+
+    // Simulate selecting time with a delay
+    setTimeout(() => {
+        const selectedNumbers = [];
+
+        // Generate random numbers within the specified range
+        for (let i = 0; i < count; i++) {
+            const randomNum = Math.floor(Math.random() * (end - start + 1)) + start;
+            selectedNumbers.push(randomNum);
+        }
+
+        // Display the selected numbers
+        const resultText = document.getElementById("result");
+        resultText.innerText = `🎉 Selected Numbers: ${selectedNumbers.join(', ')} 🎉`;
+
+        // Hide the dot-spin after selecting is complete
+        dotSpin.style.display = "none";
+
+        // Enable the button after the delay
+        selectBtn.disabled = false;
+    }, selectingTime);
+
+    // Disable the button during the fake selecting time
+    selectBtn.disabled = true;
+}
+</script>
+</body>
+</html>
